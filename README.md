@@ -199,7 +199,7 @@ This makes it possible to distinguish between completed evaluations and failed p
 * PostgreSQL
 * Supabase Storage
 * OpenAI
-* GitHub Pages
+* Vercel
 * Custom Domain
 
 #### Admin Dashboard
@@ -224,7 +224,7 @@ The architecture intentionally keeps the public application frontend separate fr
 
 ### 🚀 Deployment
 
-The frontend is deployed as a static Next.js application through GitHub Pages and served through a custom domain.
+The frontend is deployed as a Next.js application through Vercel and served through a custom domain.
 
 The n8n workflow runs independently as the backend workflow/orchestration layer.
 
@@ -429,11 +429,11 @@ Bu yapı sayesinde değerlendirme sürecinin durumu takip edilebilir.
 * n8n — workflow otomasyonu
 * OpenAI — LLM değerlendirme
 * fuse.js — istemci taraflı fuzzy arama
-* GitHub Pages + Custom Domain
+* Vercel + Custom Domain
 
 ### 🚀 Deployment
 
-Frontend statik Next.js uygulaması olarak GitHub Pages üzerinde deploy edilmekte ve özel domain üzerinden yayınlanmaktadır.
+Frontend Next.js uygulaması olarak Vercel üzerinde deploy edilmekte ve özel domain üzerinden yayınlanmaktadır.
 
 n8n workflow/orchestration katmanı olarak bağımsız şekilde çalışmaktadır.
 
