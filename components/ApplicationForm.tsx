@@ -274,7 +274,20 @@ export default function ApplicationForm() {
       >
         {isSubmitting ? (
           <>
-            <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            <span className="mr-2 inline-flex items-center gap-1">
+              <span
+                className="h-1.5 w-1.5 animate-bounce rounded-full bg-white"
+                style={{ animationDelay: "0ms" }}
+              />
+              <span
+                className="h-1.5 w-1.5 animate-bounce rounded-full bg-white"
+                style={{ animationDelay: "150ms" }}
+              />
+              <span
+                className="h-1.5 w-1.5 animate-bounce rounded-full bg-white"
+                style={{ animationDelay: "300ms" }}
+              />
+            </span>
             Gönderiliyor…
           </>
         ) : (
