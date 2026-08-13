@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 /**
  * CV indirme API'si
@@ -9,11 +10,24 @@ import { createClient } from "@/lib/supabase/server";
  *
  * - Sadece oturum açmış admin kullanıcılar erişebilir.
  * - Signed URL 60 saniye geçerli.
+ * - Dakikada max 30 istek (rate limit).
  * - cv_path applications tablosundan çözümlenir; istemci doğrudan
-n   bucket adını bilemiyor.
+ *   bucket adını bilemez.
  */
 
 export async function GET(request: NextRequest) {
+  // Rate limit: IP bazlı
+  const forwarded = request.headers.get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() ?? "unknown";
+  const limit = checkRateLimit(`cv:${ip}`);
+
+  if (!limit.allowed) {
+    return new Response(
+      "Çok fazla istek. Lütfen biraz bekleyin.",
+      { status: 429 }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
 
